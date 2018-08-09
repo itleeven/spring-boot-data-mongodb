@@ -20,5 +20,9 @@ public interface PersonRepository extends MongoRepository<Person, String> {
 
     int deleteByName(String name);
 
-    Person updateNameById(String name, String id);
+    //Person updateNameById(String name, String id);
+
+    // age = 25 and name like %name%
+    @Query("{'age': 25, 'name': {$regex: ?0} }")
+    List<Person> findByNameLike(String name);
 }

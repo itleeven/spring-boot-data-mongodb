@@ -28,6 +28,11 @@ public class PersonController {
     @Autowired
     private MongoTemplate mongoTemplate;
 
+    @RequestMapping("/findByNameLike")
+    public List<Person> findByNameLike(String name) {
+        return personRepository.findByNameLike(name);
+    }
+
     @RequestMapping("/find")
     public List<Person> find() {
         List<Person> ps = personRepository.find(true, "name");
@@ -159,6 +164,7 @@ public class PersonController {
 
     @RequestMapping("/update")
     public Person update(String id) {
-        return personRepository.updateNameById("naff", id);
+        //return personRepository.updateNameById("naff", id);
+        return null;
     }
 }
